@@ -14,7 +14,7 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 
 group :development, :test do
-  gem 'debug', platforms: %i[ mri windows ]
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.1.0'
 end
 
@@ -24,5 +24,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'fuubar'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
