@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '3.3.0'
 
 gem 'bootsnap', require: false
+gem 'chartkick'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -19,6 +20,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'spring'
 end
 
