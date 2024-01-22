@@ -1,13 +1,16 @@
 <div>
   <h1 class="font-bold text-4xl mb-6">RPi Tilt</h1>
 
-  <div class="mb-12">
-    <h2 class="text-xl">Specific Gravity</h2>
-    <%= area_chart @gravity_data, width: "1280px", height: "500px", min: @min_gravity, max: @max_gravity %>
-  </div>
-
-  <div class="mb-12">
-    <h2 class="text-xl">Temperature</h2>
-    <%= area_chart @temp_data, width: "1280px", height: "500px", min: @min_temp, max: @max_temp, colors: ["#e06666"] %>
-  </div>
+  <h2 class="text-2xl">Beers</h2>
+  <% if @beers.present? %>
+    <% @beers.each do |beer| %>
+      <h2 class="text-xl">
+        <%= link_to beer.name, beer_path(id: beer.slug), class: 'text-blue-700' %>
+        -
+        <%= beer.created_at.strftime("%m/%d/%Y") %>
+      </h2>
+    <% end %>
+  <% else %>
+    <h2 class="text-xl">No Beers</h2>
+  <% end %>
 </div>

@@ -11,6 +11,7 @@ gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'stringex'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
 

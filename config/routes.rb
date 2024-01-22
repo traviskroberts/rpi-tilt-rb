@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resource :tilt_data, only: [:create]
+  resources :beer, only: [:show]
+  resources :tilt_data, only: [:create]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "pages#index"
+  root 'pages#index'
 end

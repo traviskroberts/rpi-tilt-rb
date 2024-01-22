@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_18_025145) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_22_025145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tilt_data", force: :cascade do |t|
+  create_table "beers", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tilt_data", force: :cascade do |t|
+    t.bigint "beer_id", null: false
     t.string "color"
     t.integer "temp_fahrenheit"
     t.integer "temp_celsius"
@@ -23,8 +30,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_025145) do
     t.datetime "timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_tilt_data_on_name"
+    t.index ["beer_id"], name: "index_tilt_data_on_beer_id"
     t.index ["timestamp"], name: "index_tilt_data_on_timestamp"
   end
 
+  add_foreign_key "tilt_data", "beers"
 end

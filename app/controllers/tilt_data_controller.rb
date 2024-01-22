@@ -2,9 +2,9 @@ class TiltDataController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def create
-    TiltData.create!(
-      name: params[:name],
-      gravity: params[:gravity].round(4),
+    beer = Beer.where(name: params[:name]).first_or_create!
+    beer.tilt_data.create!(
+      gravity: params[:gravity].to_f.round(4),
       temp_celsius: params[:temp_celsius],
       temp_fahrenheit: params[:temp_fahrenheit],
       timestamp: params[:timestamp]

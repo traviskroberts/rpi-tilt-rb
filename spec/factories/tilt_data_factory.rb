@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tilt_data do
-    name { 'Beer' }
+    beer
     temp_fahrenheit { 68 }
     temp_celsius { 21 }
     gravity { 1.042 }
