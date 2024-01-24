@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: rpi_tilt_rb_production
-  username: <%= Rails.application.credentials.db.username %>
-  password: <%= Rails.application.credentials.db.password %>
+  url: <%= ENV['DATABASE_URL'] %>
