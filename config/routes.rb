@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :user_session
+
   resources :beer, only: [:show]
   resources :tilt_data, only: [:create]
 

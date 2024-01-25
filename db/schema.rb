@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_025145) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_25_012807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_025145) do
     t.datetime "updated_at", null: false
     t.index ["beer_id"], name: "index_tilt_data_on_beer_id"
     t.index ["timestamp"], name: "index_tilt_data_on_timestamp"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "crypted_password"
+    t.string "password_salt"
+    t.string "persistence_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["persistence_token"], name: "index_users_on_persistence_token", unique: true
   end
 
   add_foreign_key "tilt_data", "beers"

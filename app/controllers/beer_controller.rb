@@ -1,4 +1,6 @@
 class BeerController < ApplicationController
+  before_action :require_user
+
   def show
     @beer = Beer.find_by!(slug: params[:id])
     tilt_data = @beer.tilt_data.order(:timestamp)
@@ -6,7 +8,7 @@ class BeerController < ApplicationController
     @gravity_data = []
     @temp_data = []
 
-    tilt_data.map do |d| 
+    tilt_data.map do |d|
       timestamp = d.timestamp.strftime('%m-%e-%y %H:%M')
       @gravity_data << [timestamp, d.gravity]
       @temp_data << [timestamp, d.temp_fahrenheit]

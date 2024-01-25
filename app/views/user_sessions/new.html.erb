@@ -1,0 +1,24 @@
+<%= form_for @user_session, url: user_session_url do |f| %>
+  <% if @user_session.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_session.errors.count, "error") %>:</h2>
+    <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li class="text-red-600"><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label :password %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <span class="flex leading-4">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me, class: 'ml-2' %>
+  </span>
+  <br />
+  <%= f.submit "Login", class: 'rounded-md bg-sky-600 text-white px-2 py-1' %>
+<% end %>
