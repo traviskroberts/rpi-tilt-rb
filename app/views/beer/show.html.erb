@@ -1,6 +1,25 @@
 <div>
   <h1 class="font-bold text-4xl mb-6"><%= @beer.name %></h1>
 
+  <div class="flex flex-row justify-between mb-4">
+    <div class="w-1/5 border-solid border-slate-200 border-2 text-center">
+      <h2 class="text-xs uppercase mt-1">Gravity</h2>
+      <div class="font-bold text-[#89A2DF] text-5xl my-4"><%= @gravity_data.last.last %></div>
+    </div>
+    <div class="w-1/5 border-solid border-slate-200 border-2 text-center">
+      <h2 class="text-xs uppercase mt-1">Temperature</h2>
+      <div class="font-bold text-[#EBA3A4] text-5xl my-4"><%= @temp_data.last.last %>&deg;</div>
+    </div>
+    <div class="w-1/5 border-solid border-slate-200 border-2 text-center">
+      <h2 class="text-xs uppercase mt-1">Alcohol By Volume</h2>
+      <div class="font-bold text-[#7A20A9] text-5xl my-4"><%= @beer.alcohol_by_volume %>%</div>
+    </div>
+    <div class="w-1/5 border-solid border-slate-200 border-2 text-center">
+      <h2 class="text-xs uppercase mt-1">Apparent Attenuation</h2>
+      <div class="font-bold text-[#B50020] text-5xl my-4"><%= @beer.apparent_attenuation %>%</div>
+    </div>
+  </div>
+
   <div class="mb-12">
     <h2 class="text-xl">Specific Gravity</h2>
     <%= area_chart @gravity_data, height: "500px", min: @min_gravity, max: @max_gravity %>
