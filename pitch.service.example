@@ -1,0 +1,14 @@
+[Unit]
+Description=Pitch
+After=network.target
+
+[Service]
+ExecStart=sudo /usr/bin/python3 -m pitch
+WorkingDirectory=/path/to/dir
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=travis
+
+[Install]
+WantedBy=multi-user.target

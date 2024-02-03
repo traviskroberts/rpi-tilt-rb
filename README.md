@@ -1,24 +1,51 @@
-# README
+# RPi Tilt Ruby
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App to receive data from a Tilt hydrometer and display graphs of gravity/temperature.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Raspberry Pi running [tilt-pitch](https://github.com/linjmeyer/tilt-pitch)
+- This app running on a domain that is acessible by tilt-pitch
 
-* System dependencies
+## Setup
 
-* Configuration
+Once you have this app running on an accessible ip/domain, you'll want to create a `pitch.json` config for tilt-pitch.
 
-* Database creation
+_Assuming you have a black Tilt (change color to match your Tilt)_
 
-* Database initialization
+```json
+{
+  "black_name": "My Beer",
+  "black_original_gravity": 1.054, # change to your beer's OG
+  "webhook_urls": ["https://url.of.server/tilt_data"],
+  "webhook_limit_period": 1800 # send data every 30 minutes
+}
+```
 
-* How to run the test suite
+Start tilt-pitch with the specified configuration.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setting tilt-pitch as a systemd service
 
-* Deployment instructions
+1. Create a `pitch.service` file with the following contents (set `WorkingDirectory` to where you want tilt-pitch to run - where the `pitch.json` file resides)
 
-* ...
+```
+[Unit]
+Description=Pitch
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -m pitch
+WorkingDirectory=/path/to/directory
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=travis
+
+[Install]
+WantedBy=multi-user.target
+```
+
+2. Move the file to the `/etc/systemd/system` directory.
+3. Run `systemctl enable pitch`
+4. Run `systemctl start pitch`
+5. You should see data start to appear in the app.
