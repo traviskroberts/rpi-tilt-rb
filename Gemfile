@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'activeadmin'
 gem 'authlogic'
 gem 'bootsnap', require: false
 gem 'chartkick'
@@ -10,6 +11,7 @@ gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3'
+gem 'sass-rails'
 gem 'scrypt', "~> 3.0"
 gem 'sprockets-rails'
 gem 'stimulus-rails'
