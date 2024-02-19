@@ -13,12 +13,12 @@
 
   <body>
     <main class="container mx-auto px-2 flex flex-col">
-      <header class="flex justify-between my-5">
+      <header class="flex justify-between my-5 text-base">
         <%= link_to 'Home', root_path, class: 'text-blue-700' %>
         <% if @current_user %>
-          <span class="flex">
+          <div class="flex items-center">
             <%= @current_user.email %> |
-            <%= button_to 'Logout', user_session_path, method: :delete, class: 'text-blue-700 ml-1' %>
+            <%= button_to 'Logout', user_session_path, method: :delete, class: 'bg-sky-600 ml-1' %>
           </span>
         <% end %>
       </header>
